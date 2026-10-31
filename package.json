@@ -1,0 +1,41 @@
+{
+  "name": "poranny-pulpit",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "postinstall": "npm install --prefix api",
+    "start": "concurrently -n api,shell,weather,rates,dog -c magenta,blue,yellow,green,cyan \"npm:start:api\" \"npm:start:shell\" \"npm:start:weather\" \"npm:start:rates\" \"npm:start:dog\"",
+    "start:api": "npm start --prefix api",
+    "start:shell": "ng serve shell",
+    "start:weather": "ng serve mfe-weather",
+    "start:rates": "ng serve mfe-rates",
+    "start:dog": "ng serve mfe-dog",
+    "build": "ng build mfe-weather && ng build mfe-rates && ng build mfe-dog && ng build shell",
+    "test": "npm run test:api && npm run test:ng",
+    "test:api": "npm test --prefix api",
+    "test:ng": "ng test shell --watch=false && ng test mfe-weather --watch=false && ng test mfe-rates --watch=false && ng test mfe-dog --watch=false"
+  },
+  "private": true,
+  "packageManager": "npm@11.16.0",
+  "dependencies": {
+    "@angular/common": "^22.2.0",
+    "@angular/compiler": "^22.2.0",
+    "@angular/core": "^22.2.0",
+    "@angular/platform-browser": "^22.2.0",
+    "es-module-shims": "^2.8.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular-architects/native-federation": "~22.2.4",
+    "@angular/build": "^22.2.5",
+    "@angular/cli": "^22.2.5",
+    "@angular/compiler-cli": "^22.2.0",
+    "@softarc/native-federation-orchestrator": "^4.8.0",
+    "concurrently": "^10.0.6",
+    "jsdom": "^30.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "~6.0.2",
+    "vitest": "^5.0.0"
+  }
+}

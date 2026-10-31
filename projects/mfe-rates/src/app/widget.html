@@ -1,0 +1,28 @@
+@if (rates.hasValue()) {
+  @let r = rates.value();
+  <header>Kursy walut</header>
+
+  <ul>
+    @for (c of r.currencies; track c.code) {
+      <li [class]="trend(c.change)">
+        <span class="code" [title]="c.name">{{ c.code }}</span>
+        <span class="rate">{{ formatRate(c.rate) }}</span>
+        <span class="change">{{ formatChange(c.changePercent) }}</span>
+        <svg viewBox="0 0 72 28" preserveAspectRatio="none" aria-hidden="true">
+          <polyline [attr.points]="sparkline(c)" vector-effect="non-scaling-stroke" />
+        </svg>
+      </li>
+    }
+  </ul>
+
+  <p class="meta">Notowanie z {{ formatQuoteDate(r.date) }} · Źródło: NBP</p>
+} @else if (rates.error()) {
+  <p class="error">Nie udało się pobrać kursów walut. Spróbuj ponownie za chwilę.</p>
+} @else {
+  <div class="skeleton" aria-label="Ładowanie kursów">
+    <span class="s-title"></span>
+    @for (i of [1, 2, 3, 4]; track i) {
+      <span class="s-row"></span>
+    }
+  </div>
+}

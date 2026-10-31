@@ -1,0 +1,14 @@
+<main>
+  <header>
+    <p class="date">{{ date }}</p>
+    <h1>{{ greeting }}</h1>
+  </header>
+
+  <section class="grid">
+    @for (name of remotes; track name; let i = $index) {
+      <app-remote-widget [name]="name" [style.animation-delay.ms]="i * 90" />
+    } @empty {
+      <p class="empty">Brak widgetów w manifeście. Czy API działa na porcie 3000?</p>
+    }
+  </section>
+</main>

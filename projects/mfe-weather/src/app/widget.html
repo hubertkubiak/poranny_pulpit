@@ -1,0 +1,48 @@
+@if (weather.hasValue()) {
+  @let w = weather.value();
+  <header class="place">
+    <span>{{ w.place ?? 'Twoja okolica' }}</span>
+    @if (w.defaultLocation) {
+      <small>lokalizacja domyślna</small>
+    }
+  </header>
+
+  <div class="now">
+    <div>
+      <p class="temp">{{ w.temperature }}°</p>
+      <p class="desc">{{ w.description }}</p>
+      <p class="feels">odczuwalna {{ w.feelsLike }}°</p>
+    </div>
+    <dl class="range">
+      <div><dt>max</dt><dd>{{ w.max }}°</dd></div>
+      <div><dt>min</dt><dd>{{ w.min }}°</dd></div>
+    </dl>
+  </div>
+
+  @if (w.hourly.length > 1) {
+    <figure class="chart" aria-label="Temperatura w ciągu najbliższych 12 godzin">
+      <svg [attr.viewBox]="'0 0 ' + chart.width + ' ' + chart.height" preserveAspectRatio="none">
+        <polyline [attr.points]="points(w)" vector-effect="non-scaling-stroke" />
+      </svg>
+      <figcaption>
+        @for (h of labels(w); track h.time) {
+          <span>{{ h.time }} <b>{{ h.temperature | number: '1.0-0' }}°</b></span>
+        }
+      </figcaption>
+    </figure>
+  }
+
+  <p class="attribution">
+    Pogoda: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a>
+    · Lokalizacja: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>
+  </p>
+} @else if (weather.error()) {
+  <p class="error">Nie udało się pobrać pogody. Spróbuj ponownie za chwilę.</p>
+} @else {
+  <div class="skeleton" aria-label="Ładowanie pogody">
+    <span class="s-line short"></span>
+    <span class="s-block"></span>
+    <span class="s-line"></span>
+    <span class="s-chart"></span>
+  </div>
+}

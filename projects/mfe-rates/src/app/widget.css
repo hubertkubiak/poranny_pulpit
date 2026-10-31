@@ -1,0 +1,134 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  min-height: 320px;
+  padding: var(--space-card);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+}
+
+header {
+  font-weight: 500;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: grid;
+  grid-template-columns: 2.5rem auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+.code {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.rate {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.change {
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+}
+
+svg {
+  justify-self: end;
+  width: 100%;
+  max-width: 72px;
+  height: 28px;
+  overflow: visible;
+}
+
+polyline {
+  fill: none;
+  stroke: var(--color-text-muted);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.up .change {
+  color: var(--color-up);
+}
+
+.up polyline {
+  stroke: var(--color-up);
+}
+
+.down .change {
+  color: var(--color-down);
+}
+
+.down polyline {
+  stroke: var(--color-down);
+}
+
+.meta {
+  margin: auto 0 0;
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+}
+
+.error {
+  margin: auto 0;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skeleton span {
+  display: block;
+  border-radius: 8px;
+  background: var(--color-skeleton);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.s-title {
+  height: 16px;
+  width: 40%;
+}
+
+.s-row {
+  height: 30px;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton span {
+    animation: none;
+  }
+}

@@ -1,0 +1,89 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+}
+
+img,
+.s-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-skeleton);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px var(--space-card) var(--space-card);
+}
+
+p {
+  margin: 0;
+}
+
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.breed {
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+}
+
+.caption {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.error {
+  margin: auto;
+  padding: var(--space-card);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.skeleton span {
+  display: block;
+  border-radius: 8px;
+  background: var(--color-skeleton);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton .s-photo {
+  border-radius: 0;
+}
+
+.s-line {
+  height: 16px;
+  width: 70%;
+}
+
+.s-line.short {
+  width: 40%;
+  height: 24px;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton span {
+    animation: none;
+  }
+}

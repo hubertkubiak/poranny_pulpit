@@ -1,0 +1,64 @@
+/*
+ * DELIBERATE DUPLICATION: a copy of the shell's design tokens.
+ * When this remote runs inside the shell, these styles are NOT loaded at all
+ * (only the exposed component travels through federation) and the shell's tokens apply.
+ * This copy exists only so the remote looks right when served on its own.
+ * Keep it in sync with projects/shell/src/styles.css.
+ */
+:root {
+  --color-bg: #faf8f5;
+  --color-card: #ffffff;
+  --color-text: #1c1b1a;
+  --color-text-muted: #7a7268;
+  --color-border: #ece7e0;
+  --color-skeleton: #efebe5;
+  --color-accent: #d98e2b;
+  --color-up: #4f8a5b;
+  --color-down: #b5574b;
+
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --radius-card: 20px;
+  --shadow-card: 0 1px 2px rgb(60 40 20 / 0.04), 0 8px 24px rgb(60 40 20 / 0.05);
+  --space-card: 28px;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1b1815;
+    --color-card: #24201c;
+    --color-text: #f1ebe3;
+    --color-text-muted: #a69c90;
+    --color-border: #342e28;
+    --color-skeleton: #2f2a24;
+    --color-accent: #e3a04a;
+    --color-up: #7bb287;
+    --color-down: #d98378;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.2);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Standalone mode: show the single widget centred on the page. */
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}

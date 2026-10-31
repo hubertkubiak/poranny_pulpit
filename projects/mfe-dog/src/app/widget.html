@@ -1,0 +1,19 @@
+@if (dog.hasValue()) {
+  @let d = dog.value();
+  <img [src]="d.imageUrl" [alt]="'Pies dnia: ' + d.breed" />
+  <div class="body">
+    <p class="label">Pies dnia</p>
+    <p class="breed">{{ d.breed }}</p>
+    <p class="caption">{{ d.caption }}</p>
+  </div>
+} @else if (dog.error()) {
+  <p class="error">Pies dnia poszedł na spacer. Wróci za chwilę.</p>
+} @else {
+  <div class="skeleton" aria-label="Ładowanie psa dnia">
+    <span class="s-photo"></span>
+    <div class="body">
+      <span class="s-line short"></span>
+      <span class="s-line"></span>
+    </div>
+  </div>
+}

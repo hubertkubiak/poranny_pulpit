@@ -1,0 +1,74 @@
+:host {
+  display: block;
+}
+
+.card {
+  height: 100%;
+  min-height: 320px;
+  padding: var(--space-card);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.fallback {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-style: dashed;
+  box-shadow: none;
+  background: transparent;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.skeleton span {
+  display: block;
+  height: 18px;
+  border-radius: 8px;
+  background: var(--color-skeleton);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton span:first-child {
+  width: 40%;
+}
+
+.skeleton span:nth-child(2) {
+  width: 60%;
+  height: 64px;
+}
+
+.skeleton span:last-child {
+  flex: 1;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton span {
+    animation: none;
+  }
+}
